@@ -1,0 +1,4 @@
+- name: Send command over ssh
+  delegate_to: localhost
+  ansible.builtin.script: "files/run_command.py {{ ansible_host }} {{ ansible_user }} {{ ansible_ssh_pass }} '{{ command }}'"
+  changed_when: false

@@ -1,0 +1,16 @@
+- name: "Exporting settings"
+  delegate_to: localhost
+  block:
+    - name: Ensure dest directory exists
+      ansible.builtin.file:
+        path: "{{ export_path_dir }}"
+        state: directory
+        mode: '0500'
+
+    - name: Export files
+      ansible.builtin.get_url:
+        url_username: "{{ ansible_user }}"
+        url_password: "{{ ansible_ssh_pass }}"
+        url: "http://{{ ansible_host }}/ISAPI/System/configurationData?secretkey={{ hv_export_key }}"
+        dest: "{{ export_path_dir }}/cctv_{{ inventory_hostname }}_config.cfg"
+        mode: '0400'

@@ -1,0 +1,8 @@
+- name: "Exporting settings"
+  delegate_to: localhost
+  ansible.builtin.get_url:
+    url_username: "{{ ansible_user }}"
+    url_password: "{{ ansible_ssh_pass }}"
+    url: "http://{{ ansible_host }}/ISAPI/System/logServer"
+    dest: "{{ export_path_dir }}/cctv_{{ inventory_hostname }}_current.xml"
+    mode: '0400'

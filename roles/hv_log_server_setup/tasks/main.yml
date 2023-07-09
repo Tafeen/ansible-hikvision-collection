@@ -1,0 +1,9 @@
+- name: "Setup server log"
+  delegate_to: localhost
+  ansible.builtin.uri:
+    url_username: "{{ ansible_user }}"
+    url_password: "{{ ansible_ssh_pass }}"
+    url: "http://{{ ansible_host }}/ISAPI/System/logServer"
+    method: PUT
+    body_format: raw
+    body: "{{ lookup('file', server_log_config) }}"
