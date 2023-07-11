@@ -1,0 +1,1 @@
+# Ansible hikvision ISAPI server capabilities

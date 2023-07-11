@@ -1,0 +1,1 @@
+# Ansible hikvision ISAPI current log server setup
